@@ -11,6 +11,6 @@ package daw;
 public class T6GUIDanielNavarro {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        VentanaPrincipal main = new VentanaPrincipal();
     }
 }
