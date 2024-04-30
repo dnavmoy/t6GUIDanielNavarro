@@ -10,6 +10,8 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import modelos.Joke;
+import serviciojson.JsonService;
 
 /**
  *
@@ -21,10 +23,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      * Creates new form VentanaPrincipal
      */
     //variables
-    private String url = "https://v2.jokeapi.dev/joke/Any";
+    private String url = "https://v2.jokeapi.dev/joke/";
+    private boolean coma = false;
+    private boolean ingles = false;
 
     public VentanaPrincipal() {
         initComponents();
+        jLabel4.setText("1");
 
     }
 
@@ -47,6 +52,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jSlider1 = new javax.swing.JSlider();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        jRadioButton5 = new javax.swing.JRadioButton();
+        jRadioButton6 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chistes Main");
@@ -64,21 +72,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel3.setText("Cantidad");
 
-        jRadioButton2.setText("nsfw");
+        jRadioButton2.setText("Programacion");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton2ActionPerformed(evt);
             }
         });
 
-        jRadioButton1.setText("religious");
+        jRadioButton1.setText("Misc");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
             }
         });
 
-        jRadioButton3.setText("Political");
+        jRadioButton3.setText("Dark");
         jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton3ActionPerformed(evt);
@@ -88,6 +96,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jSlider1.setMaximum(50);
         jSlider1.setMinimum(1);
         jSlider1.setValue(1);
+        jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSlider1StateChanged(evt);
+            }
+        });
 
         jLabel4.setText("jLabel4");
 
@@ -98,6 +111,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jRadioButton4.setText("Pun");
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton4ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton5.setText("Spooky");
+        jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton5ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton6.setText("Christmas");
+        jRadioButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,6 +139,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jRadioButton4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRadioButton5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRadioButton6))
                     .addComponent(jButton1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -139,20 +179,181 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jRadioButton2)
                     .addComponent(jRadioButton1)
                     .addComponent(jRadioButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton4)
+                    .addComponent(jRadioButton5)
+                    .addComponent(jRadioButton6))
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+
+
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        url = "https://v2.jokeapi.dev/joke/";
+        metodoTema();
+        metodoLenguaje();
+        urlCantidad();
+
+        System.out.println(url);
+
+        //para un chiste: 
+        if (jSlider1.getValue() != 1) {
+            //para varios Chistes:
+            try {
+                // TODO add your handling code here:
+                String clase = daw.ConexionHTTP.peticionHttpGet(url);
+                modelos2.ListaChistes listachistes = (modelos2.ListaChistes) JsonService.stringToPojo(clase, modelos2.ListaChistes.class);
+                for (modelos2.Joke chiste : listachistes.getJokes()) {
+                    System.out.println("prueba tostring varios : " + chiste);
+                }
+                //System.out.println(lineas);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "error accediendo a url");
+            }
+        } else {
+            try {
+                // TODO add your handling code here:
+                String clase = daw.ConexionHTTP.peticionHttpGet(url);
+                modelos.Joke chiste = (modelos.Joke) JsonService.stringToPojo(clase, modelos.Joke.class);
+                System.out.println("prueba to String: " + chiste);
+                //System.out.println(lineas);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "error accediendo a url");
+            }
+        }
+
+        VentanaMostrar nueva= new VentanaMostrar(this, true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+
+
+    }//GEN-LAST:event_jRadioButton4ActionPerformed
+
+    private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
+
+
+    }//GEN-LAST:event_jRadioButton5ActionPerformed
+
+    private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
+
+
+    }//GEN-LAST:event_jRadioButton6ActionPerformed
+
+    private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
+        jLabel4.setText(String.valueOf(jSlider1.getValue()));
+    }//GEN-LAST:event_jSlider1StateChanged
+
+    private void urlCantidad() {
+        if (ingles) {
+            url = url + "?";
+        } else {
+            url = url + "&";
+        }
+        if (jSlider1.getValue() != 1) {
+            if (coma) {
+                url = url + "amount=" + jSlider1.getValue();
+            }
+
+        }
+    }
+
+    private void urlRadioBoton(String coso) {
+        Pattern p = Pattern.compile(coso);
+        Matcher m = p.matcher(url);
+        if (m.find()) {
+            url = m.replaceAll("");
+        } else {
+            url = url + coso;
+        }
+        System.out.println(url);
+
+    }
+
+    private void metodoTema() {
+
+        coma = false;
+        if (jRadioButton2.isSelected()) {
+            url = url + "Programming";
+            coma = true;
+        }
+        if (jRadioButton1.isSelected() && coma) {
+            url = url + ",Miscellaneous";
+        } else if (jRadioButton1.isSelected()) {
+            url = url + "Miscellaneous";
+            coma = true;
+        }
+        if (jRadioButton3.isSelected() && coma) {
+            url = url + ",Dark";
+        } else if (jRadioButton3.isSelected()) {
+            url = url + "Dark";
+            coma = true;
+        }
+        if (jRadioButton4.isSelected() && coma) {
+            url = url + ",Pun";
+        } else if (jRadioButton4.isSelected()) {
+            url = url + "Pun";
+            coma = true;
+        }
+        if (jRadioButton5.isSelected() && coma) {
+            url = url + ",Spooky";
+        } else if (jRadioButton5.isSelected()) {
+            url = url + "Spooky";
+            coma = true;
+        }
+        if (jRadioButton6.isSelected() && coma) {
+            url = url + ",Christmas";
+        } else if (jRadioButton6.isSelected()) {
+            url = url + "Christmas";
+            coma = true;
+        }
+        if (!coma) {
+            url = url + "Any";
+            coma = true;
+        }
+
+    }
+
+    private boolean metodoComa() {
+        Pattern p = Pattern.compile("[?]lang=[a-z]{2}");
+        Matcher m = p.matcher(url);
+        if (url.contains("")) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    private void metodoLenguaje() {
+
         String idioma = jComboBox1.getModel().getSelectedItem().toString();
         Pattern p = Pattern.compile("[?]lang=[a-z]{2}");
         Matcher m = p.matcher(url);
@@ -163,48 +364,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         switch (idioma) {
             case "Español":
                 url = url + "?lang=es";
+                ingles = false;
                 break;
             case "Czech":
                 url = url + "?lang=cs";
+                ingles = false;
                 break;
             case "German":
                 url = url + "?lang=de";
+                ingles = false;
                 break;
             case "French":
                 url = url + "?lang=fr";
+                ingles = false;
                 break;
             case "Portuguese":
                 url = url + "?lang=pt";
+                ingles = false;
                 break;
+            default:
+                ingles = true;
         }
-        System.out.println(url);
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-       
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
-
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
-
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        if(jRadioButton2.isSelected()){
-            url=url.concat("blacklistFlags=nsfw");
-        }
-        try {
-            // TODO add your handling code here:
-            daw.ConexionHTTP.peticionHttpGet(url);
-            //System.out.println(lineas);
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "error accediendo a url");
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
 
     /**
      * @param args the command line arguments
@@ -251,6 +433,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton jRadioButton5;
+    private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JSlider jSlider1;
     // End of variables declaration//GEN-END:variables
 }
