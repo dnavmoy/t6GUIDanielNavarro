@@ -11,6 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import modelos.Joke;
+import modelos2.ListaChistes;
 import serviciojson.JsonService;
 
 /**
@@ -230,9 +231,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 // TODO add your handling code here:
                 String clase = daw.ConexionHTTP.peticionHttpGet(url);
                 modelos2.ListaChistes listachistes = (modelos2.ListaChistes) JsonService.stringToPojo(clase, modelos2.ListaChistes.class);
-                for (modelos2.Joke chiste : listachistes.getJokes()) {
-                    System.out.println("prueba tostring varios : " + chiste);
-                }
+                ChistesATexto(listachistes);
+                VentanaMostrar nueva= new VentanaMostrar(this, true);
+                     nueva.cambiarTexto(ChistesATexto(listachistes));
                 //System.out.println(lineas);
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, "error accediendo a url");
@@ -242,16 +243,31 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 // TODO add your handling code here:
                 String clase = daw.ConexionHTTP.peticionHttpGet(url);
                 modelos.Joke chiste = (modelos.Joke) JsonService.stringToPojo(clase, modelos.Joke.class);
-                System.out.println("prueba to String: " + chiste);
-                //System.out.println(lineas);
+                 VentanaMostrar nueva= new VentanaMostrar(this, true);
+                     nueva.cambiarTexto(ChisteATexto(chiste));
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, "error accediendo a url");
             }
         }
 
-        VentanaMostrar nueva= new VentanaMostrar(this, true);
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+    public String ChisteATexto(Joke chiste){
+        return chiste.getSetup()+"\n" +chiste.getDelivery();
+    }
+    
+    public String ChistesATexto(ListaChistes listachistes){
+        String devolver="";
+        for (modelos2.Joke chiste : listachistes.getJokes()) {
+                    devolver=devolver+chiste.getSetup()+"\n" +chiste.getDelivery()+"\n";
+                  
+                }
+        return devolver;
+    }
+    
     private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
 
 
