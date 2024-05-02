@@ -221,7 +221,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         metodoTema();
         metodoLenguaje();
         urlCantidad();
-
+        url=url+"&type=twopart";
+        
         System.out.println(url);
 
         //para un chiste: 
